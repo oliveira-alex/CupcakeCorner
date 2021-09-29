@@ -19,6 +19,7 @@ struct ContentView: View {
 							Text(Order.types[$0])
 						}
 					}
+//					.pickerStyle(SegmentedPickerStyle())
 					
 					Stepper(value: $order.quantity, in: 3...20) {
 						Text("number of cakes: \(order.quantity)")
