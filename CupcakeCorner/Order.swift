@@ -34,7 +34,13 @@ class Order: ObservableObject, Codable {
     @Published var zip = ""
     
     var hasValidAddress: Bool {
-        if name.isEmpty || streetAddress.isEmpty || city.isEmpty || zip.isEmpty {
+        if name.trimmingCharacters(in: .whitespaces).isEmpty {
+            return false
+        } else if streetAddress.trimmingCharacters(in: .whitespaces).isEmpty {
+            return false
+        } else if city.trimmingCharacters(in: .whitespaces).isEmpty {
+            return false
+        } else if zip.trimmingCharacters(in: .whitespaces).isEmpty {
             return false
         }
         
