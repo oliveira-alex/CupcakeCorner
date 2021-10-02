@@ -87,9 +87,9 @@ class Order: ObservableObject, Codable {
         try container.encode(extraFrosting, forKey: .extraFrosting)
         try container.encode(addSprinkles, forKey: .addSprinkles)
         
-        try container.encode(name, forKey: .name)
-        try container.encode(streetAddress, forKey: .streetAddress)
-        try container.encode(city, forKey: .city)
-        try container.encode(zip, forKey: .zip)
+        try container.encode(name.trimmingCharacters(in: .whitespaces), forKey: .name)
+        try container.encode(streetAddress.trimmingCharacters(in: .whitespaces), forKey: .streetAddress)
+        try container.encode(city.trimmingCharacters(in: .whitespaces), forKey: .city)
+        try container.encode(zip.trimmingCharacters(in: .whitespaces), forKey: .zip)
     }
 }
