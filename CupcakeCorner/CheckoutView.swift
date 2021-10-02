@@ -22,7 +22,7 @@ struct CheckoutView: View {
                         .scaledToFit()
                         .frame(width: geo.size.width)
                     
-                    Text("Your total is $\(self.order.cost, specifier: "%.2f")")
+                    Text("Your total is $\(self.order.items.cost, specifier: "%.2f")")
                         .font(.title)
                     
                     Button("Place order") {
@@ -68,7 +68,7 @@ struct CheckoutView: View {
             
             if let decodedOrder = try? JSONDecoder().decode(Order.self, from: data) {
                 self.alertTitle = "Thank you!"
-                self.confirmationMessage = "Your order for \(decodedOrder.quantity)x \(Order.types[decodedOrder.type].lowercased()) cupcakes is on its way!"
+                self.confirmationMessage = "Your order for \(decodedOrder.items.quantity)x \(OrderItems.types[decodedOrder.items.type].lowercased()) cupcakes is on its way!"
                 self.showingConfirmation = true
             } else {
                 print("Invalid response from server")
