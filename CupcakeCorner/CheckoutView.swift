@@ -24,7 +24,7 @@ struct CheckoutView: View {
                     
                     Text("Your total is $\(self.order.items.cost, specifier: "%.2f")")
                         .font(.title)
-                        .accessibilityLabel(self.order.items.cost.truncatingRemainder(dividingBy: 1) == 0 ?
+                        .accessibilityLabel(modf(order.items.cost).1.isZero ? // if fraction part of the value is equal to zero
                                             "Your total is $\(Int(self.order.items.cost))" :
                                             "Your total is $\(self.order.items.cost, specifier: "%.2f") cents"
                         )
